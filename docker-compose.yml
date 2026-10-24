@@ -1,0 +1,22 @@
+services:
+  postgres-db:
+    image: postgres:16-alpine
+    container_name: vulnfollowup-db
+    environment:
+      POSTGRES_USER: vuln_admin
+      POSTGRES_PASSWORD: vuln_password_local
+      POSTGRES_DB: vulnfollowup
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vuln_admin -d vulnfollowup"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
