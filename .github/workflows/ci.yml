@@ -1,0 +1,122 @@
+name: CI/CD Pipeline - VulnFollowUp
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+  workflow_dispatch:
+
+# Cancela ejecuciones en curso si se sube un nuevo commit a la misma rama
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  auditoria-repo:
+    name: Auditoria de Estructura y Limpieza
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v4
+
+      - name: Verificar archivos ignorados y secretos
+        run: |
+          if git ls-files | grep -E '(^|/)node_modules/|(^|/)target/|\.env$|\.apk$'; then
+            echo "Error: Se han detectado directorios de compilacion, dependencias o archivos sensibles en el commit."
+            exit 1
+          fi
+          echo "Estructura del repositorio validada."
+
+  build-backend:
+    name: Construir Backend Java
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v4
+
+      - name: Comprobar inicializacion del backend
+        id: check_java
+        run: |
+          if [ -f "backend/pom.xml" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "pom.xml no encontrado. Omitiendo fase de compilacion."
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Configurar JDK 21
+        if: steps.check_java.outputs.exists == 'true'
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+          cache-dependency-path: 'backend/pom.xml'
+
+      - name: Compilar y ejecutar tests
+        if: steps.check_java.outputs.exists == 'true'
+        working-directory: ./backend
+        run: |
+          # Asegura permisos de ejecucion en el wrapper por compatibilidad con entornos Windows
+          if [ -f "./mvnw" ]; then
+            chmod +x ./mvnw
+            ./mvnw -B clean verify
+          else
+            mvn -B clean verify
+          fi
+
+  build-frontend:
+    name: Construir Frontend Ionic
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v4
+
+      - name: Comprobar inicializacion del frontend
+        id: check_node
+        run: |
+          if [ -f "desktop-client/package.json" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "package.json no encontrado. Omitiendo fase de compilacion."
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Configurar Node.js 20
+        if: steps.check_node.outputs.exists == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependencias y compilar SPA
+        if: steps.check_node.outputs.exists == 'true'
+        working-directory: ./desktop-client
+        run: |
+          if [ -f "package-lock.json" ]; then
+            npm ci
+          else
+            npm install
+          fi
+          npm run build --if-present
+
+  security-scan:
+    name: Escaneo Trivy
+    runs-on: ubuntu-latest
+    needs: [auditoria-repo, build-backend, build-frontend]
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v4
+
+      - name: Analisis de vulnerabilidades en dependencias
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'table'
+          # Se excluye el directorio con manifiestos vulnerables destinado a las pruebas de PSP
+          skip-dirs: 'data/audit-target'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '1'
