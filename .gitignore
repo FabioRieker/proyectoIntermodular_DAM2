@@ -22,3 +22,9 @@ out/
 Thumbs.db
 *.swp
 *.swo
+
+# Wrappers de build (deben versionarse aunque sean .jar)
+!gradle/wrapper/gradle-wrapper.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+!.mvn/wrapper/maven-wrapper.jar
+!**/.mvn/wrapper/maven-wrapper.jar
