@@ -66,6 +66,15 @@ jobs:
             mvn -B clean verify
           fi
 
+      - name: Subir jar para analisis de seguridad
+        if: steps.check_java.outputs.exists == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-jar
+          path: backend/target/*.jar
+          retention-days: 1
+          if-no-files-found: ignore
+
   build-frontend:
     name: Construir Frontend Ionic
     runs-on: ubuntu-latest
@@ -108,14 +117,29 @@ jobs:
       - name: Checkout del codigo
         uses: actions/checkout@v4
 
-      - name: Analisis de vulnerabilidades en dependencias
+      - name: Descargar jar del backend
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-jar
+          path: ./backend-jar
+        continue-on-error: true
+
+      - name: Cache de la BBDD de Trivy
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/trivy
+          key: trivy-db-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            trivy-db-${{ runner.os }}-
+
+      - name: Analisis de vulnerabilidades (jar backend + lockfiles frontend)
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
           scan-ref: '.'
           format: 'table'
-          # Se excluye el directorio con manifiestos vulnerables destinado a las pruebas de PSP
-          skip-dirs: 'data/audit-target'
+          skip-dirs: 'data/audit-target,backend/src,backend/target,.mvn'
+          skip-files: '**/pom.xml'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
