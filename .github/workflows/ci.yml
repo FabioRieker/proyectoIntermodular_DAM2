@@ -31,6 +31,20 @@ jobs:
   build-backend:
     name: Construir Backend Java
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: vulnfollowup
+          POSTGRES_USER: vuln_admin
+          POSTGRES_PASSWORD: vuln_password_local
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Checkout del codigo
         uses: actions/checkout@v4

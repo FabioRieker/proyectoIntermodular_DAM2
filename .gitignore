@@ -5,3 +5,26 @@ target/
 *.log
 .idea/
 .vscode/
+
+# Java / Maven
+*.class
+*.jar
+*.war
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+out/
+
+# Otros IDEs y SO
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Wrappers de build (deben versionarse aunque sean .jar)
+!gradle/wrapper/gradle-wrapper.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+!.mvn/wrapper/maven-wrapper.jar
+!**/.mvn/wrapper/maven-wrapper.jar
