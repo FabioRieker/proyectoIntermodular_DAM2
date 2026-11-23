@@ -68,6 +68,10 @@ jobs:
           cache: 'maven'
           cache-dependency-path: 'backend/pom.xml'
 
+      - name: Aplicar el esquema PostgreSQL
+        if: steps.check_java.outputs.exists == 'true'
+        run: docker exec -i "${{ job.services.postgres.id }}" psql -X -v ON_ERROR_STOP=1 -U vuln_admin -d vulnfollowup < database/init.sql
+
       - name: Compilar y ejecutar tests
         if: steps.check_java.outputs.exists == 'true'
         working-directory: ./backend
