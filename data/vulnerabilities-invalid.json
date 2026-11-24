@@ -1,0 +1,33 @@
+[
+  {
+    "identifier": "VFU-IMP-ROLLBACK-1",
+    "title": "Discrepancia documentada en controles de acceso · proceso de conciliación",
+    "description": "Caso sintético para practicar el seguimiento del proceso de conciliación.",
+    "detectedOn": "2026-11-01",
+    "assetCodes": [
+      "AST-PAGOS",
+      "AST-PORTAL"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "baseScore": 9.8
+    }
+  },
+  {
+    "identifier": "VFU-IMP-ROLLBACK-2",
+    "title": "Interrupción del servicio en la simulación · proceso de conciliación",
+    "description": "Caso sintético para practicar el seguimiento del proceso de conciliación.",
+    "detectedOn": "2026-11-02",
+    "assetCodes": [
+      "ACTIVO-INEXISTENTE"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "baseScore": 7.5
+    }
+  }
+]

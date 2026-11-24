@@ -1,0 +1,308 @@
+[
+  {
+    "identifier": "VFU-IMP-0001",
+    "title": "Discrepancia documentada en controles de acceso · proceso de conciliación",
+    "description": "Caso sintético para practicar el seguimiento del proceso de conciliación.",
+    "detectedOn": "2026-11-01",
+    "assetCodes": [
+      "AST-PAGOS",
+      "AST-PORTAL"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "baseScore": 9.8
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0002",
+    "title": "Interrupción del servicio en la simulación · proceso de conciliación",
+    "description": "Caso sintético para practicar el seguimiento del proceso de conciliación.",
+    "detectedOn": "2026-11-02",
+    "assetCodes": [
+      "AST-PORTAL"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "baseScore": 7.5
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0003",
+    "title": "Exposición limitada de información de prueba · proceso de conciliación",
+    "description": "Caso sintético para practicar el seguimiento del proceso de conciliación.",
+    "detectedOn": "2026-11-03",
+    "assetCodes": [
+      "AST-COPIAS"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "baseScore": 5.3
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0004",
+    "title": "Lectura limitada de un registro ficticio · proceso de conciliación",
+    "description": "Caso sintético para practicar el seguimiento del proceso de conciliación.",
+    "detectedOn": "2026-11-04",
+    "assetCodes": [
+      "AST-INVENTARIO"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:L/I:N/A:N",
+      "baseScore": 1.8
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0005",
+    "title": "Observación sin impacto técnico · proceso de conciliación",
+    "description": "Caso sintético para practicar el seguimiento del proceso de conciliación.",
+    "detectedOn": "2026-11-05",
+    "assetCodes": [
+      "AST-PAGOS"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "baseScore": 0.0
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0006",
+    "title": "Incidencia crítica de la simulación · proceso de conciliación",
+    "description": "Caso sintético para practicar el seguimiento del proceso de conciliación.",
+    "detectedOn": "2026-11-06",
+    "assetCodes": [
+      "AST-PORTAL"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "baseScore": 5.3
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0007",
+    "title": "Discrepancia documentada en controles de acceso · panel de operación",
+    "description": "Caso sintético para practicar el seguimiento del panel de operación.",
+    "detectedOn": "2026-11-07",
+    "assetCodes": [
+      "AST-COPIAS",
+      "AST-PAGOS",
+      "AST-PORTAL"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "baseScore": 9.8
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0008",
+    "title": "Interrupción del servicio en la simulación · panel de operación",
+    "description": "Caso sintético para practicar el seguimiento del panel de operación.",
+    "detectedOn": "2026-11-08",
+    "assetCodes": [
+      "AST-INVENTARIO"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "baseScore": 7.5
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0009",
+    "title": "Exposición limitada de información de prueba · panel de operación",
+    "description": "Caso sintético para practicar el seguimiento del panel de operación.",
+    "detectedOn": "2026-11-09",
+    "assetCodes": [
+      "AST-PAGOS"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "baseScore": 5.3
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0010",
+    "title": "Lectura limitada de un registro ficticio · panel de operación",
+    "description": "Caso sintético para practicar el seguimiento del panel de operación.",
+    "detectedOn": "2026-11-10",
+    "assetCodes": [
+      "AST-PORTAL"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:L/I:N/A:N",
+      "baseScore": 1.8
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0011",
+    "title": "Observación sin impacto técnico · panel de operación",
+    "description": "Caso sintético para practicar el seguimiento del panel de operación.",
+    "detectedOn": "2026-11-11",
+    "assetCodes": [
+      "AST-COPIAS"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "baseScore": 0.0
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0012",
+    "title": "Incidencia crítica de la simulación · panel de operación",
+    "description": "Caso sintético para practicar el seguimiento del panel de operación.",
+    "detectedOn": "2026-11-12",
+    "assetCodes": [
+      "AST-INVENTARIO"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "baseScore": 5.3
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0013",
+    "title": "Discrepancia documentada en controles de acceso · servicio de consulta",
+    "description": "Caso sintético para practicar el seguimiento del servicio de consulta.",
+    "detectedOn": "2026-11-13",
+    "assetCodes": [
+      "AST-PAGOS",
+      "AST-PORTAL"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "baseScore": 9.8
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0014",
+    "title": "Interrupción del servicio en la simulación · servicio de consulta",
+    "description": "Caso sintético para practicar el seguimiento del servicio de consulta.",
+    "detectedOn": "2026-11-14",
+    "assetCodes": [
+      "AST-PORTAL"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "baseScore": 7.5
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0015",
+    "title": "Exposición limitada de información de prueba · servicio de consulta",
+    "description": "Caso sintético para practicar el seguimiento del servicio de consulta.",
+    "detectedOn": "2026-11-15",
+    "assetCodes": [
+      "AST-COPIAS"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "baseScore": 5.3
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0016",
+    "title": "Lectura limitada de un registro ficticio · servicio de consulta",
+    "description": "Caso sintético para practicar el seguimiento del servicio de consulta.",
+    "detectedOn": "2026-11-16",
+    "assetCodes": [
+      "AST-INVENTARIO"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:L/I:N/A:N",
+      "baseScore": 1.8
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0017",
+    "title": "Observación sin impacto técnico · servicio de consulta",
+    "description": "Caso sintético para practicar el seguimiento del servicio de consulta.",
+    "detectedOn": "2026-11-17",
+    "assetCodes": [
+      "AST-PAGOS"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N",
+      "baseScore": 0.0
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0018",
+    "title": "Incidencia crítica de la simulación · servicio de consulta",
+    "description": "Caso sintético para practicar el seguimiento del servicio de consulta.",
+    "detectedOn": "2026-11-18",
+    "assetCodes": [
+      "AST-PORTAL"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+      "baseScore": 5.3
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0019",
+    "title": "Discrepancia documentada en controles de acceso · flujo de revisión",
+    "description": "Caso sintético para practicar el seguimiento del flujo de revisión.",
+    "detectedOn": "2026-11-19",
+    "assetCodes": [
+      "AST-COPIAS",
+      "AST-PAGOS",
+      "AST-PORTAL"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      "baseScore": 9.8
+    }
+  },
+  {
+    "identifier": "VFU-IMP-0020",
+    "title": "Interrupción del servicio en la simulación · flujo de revisión",
+    "description": "Caso sintético para practicar el seguimiento del flujo de revisión.",
+    "detectedOn": "2026-11-20",
+    "assetCodes": [
+      "AST-INVENTARIO"
+    ],
+    "status": "ABIERTA",
+    "assessment": {
+      "cvssVersion": "3.1",
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "baseScore": 7.5
+    }
+  }
+]
