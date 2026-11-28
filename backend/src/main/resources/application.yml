@@ -11,3 +11,8 @@ spring:
     hibernate:
       ddl-auto: validate
     open-in-view: false
+
+# Secret SOLO para desarrollo local; en producción se inyecta por variable de entorno JWT_SECRET
+jwt:
+  secret: ${JWT_SECRET:dev-only-secret-change-in-production-256-bits-minimum-length-here}
+  expiration-seconds: ${JWT_EXPIRATION_SECONDS:86400}
