@@ -40,7 +40,7 @@ vulnfollowup/
 ├── api/                 # Documentación del contrato HTTP/REST y ejemplos de peticiones
 ├── backend/             # Servidor Java Spring Boot: API REST, concurrencia y lógica DORA (PSP + AD + SGE)
 ├── data/                # Ficheros JSON de carga inicial y directorio audit-target para escáner
-├── database/            # Script init.sql de creación de esquema y carga base (AD)
+├── database/            # Script comprobar.sql de pruebas del esquema; migraciones Flyway en backend/src/main/resources/db (AD)
 ├── desktop-client/      # Aplicación Web SPA en Ionic + Angular (DI)
 ├── docs/                # Evidencias y memorias técnicas por módulo
 │   ├── ad/              # Diagrama Entidad-Relación y pruebas transaccionales
