@@ -16,6 +16,12 @@ spring:
       ddl-auto: validate
     open-in-view: false
 
+# Escáner de dependencias. El directorio a analizar se configura aquí, no lo elige el usuario.
+scanner:
+  command: trivy,fs,--format,json,--quiet,--scanners,vuln
+  target: ${SCANNER_TARGET:../data/audit-target}
+  timeout-seconds: 300
+
 # Secret SOLO para desarrollo local; en producción se inyecta por variable de entorno JWT_SECRET
 jwt:
   secret: ${JWT_SECRET:dev-only-secret-change-in-production-256-bits-minimum-length-here}
