@@ -57,4 +57,28 @@ public class Asset {
     public String getCode() {
         return code;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public UserAccount getOwner() {
+        return owner;
+    }
+
+    public String getEnvironment() {
+        return environment;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public Provider getProvider() {
+        return provider;
+    }
 }
