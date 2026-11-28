@@ -30,8 +30,8 @@ class ScanServiceTest {
         waitUntilFinished(job);
 
         assertEquals(ScanStatus.COMPLETADO, job.getStatus());
-        assertEquals(1, job.getFindings().get("CRITICAL"));
-        assertEquals(1, job.getFindings().get("HIGH"));
+        assertEquals(1, job.getSummary().get("CRITICAL"));
+        assertEquals(1, job.getSummary().get("HIGH"));
         assertNotNull(job.getFinishedAt());
     }
 

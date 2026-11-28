@@ -62,7 +62,8 @@ public class ScanService {
     private void runScan(ScanJob job) {
         try {
             String report = runner.run();
-            job.complete(parser.countBySeverity(report));
+            List<Finding> findings = parser.parse(report);
+            job.complete(parser.countBySeverity(findings), findings);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             job.fail("Análisis interrumpido");

@@ -1,6 +1,7 @@
 package com.vulnfollowup.scan;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -17,15 +18,17 @@ public class ScanJob {
 
     private ScanStatus status = ScanStatus.EN_CURSO;
     private Instant finishedAt;
-    private Map<String, Integer> findings;
+    private Map<String, Integer> summary;
+    private List<Finding> findings;
     private String error;
 
     public ScanJob(String requestedBy) {
         this.requestedBy = requestedBy;
     }
 
-    public synchronized void complete(Map<String, Integer> findings) {
-        this.findings = findings;
+    public synchronized void complete(Map<String, Integer> summary, List<Finding> findings) {
+        this.summary = summary;
+        this.findings = List.copyOf(findings);
         this.status = ScanStatus.COMPLETADO;
         this.finishedAt = Instant.now();
     }
@@ -56,7 +59,11 @@ public class ScanJob {
         return finishedAt;
     }
 
-    public synchronized Map<String, Integer> getFindings() {
+    public synchronized Map<String, Integer> getSummary() {
+        return summary;
+    }
+
+    public synchronized List<Finding> getFindings() {
         return findings;
     }
 

@@ -65,7 +65,7 @@ class ScanControllerTest {
         }
 
         assertEquals("COMPLETADO", status);
-        assertEquals(1, (Integer) JsonPath.read(scan, "$.findings.CRITICAL"));
+        assertEquals(1, (Integer) JsonPath.read(scan, "$.summary.CRITICAL"));
     }
 
     private String login(String email, String password) throws Exception {
