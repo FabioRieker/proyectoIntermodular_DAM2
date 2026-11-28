@@ -22,6 +22,11 @@ scanner:
   target: ${SCANNER_TARGET:../data/audit-target}
   timeout-seconds: 300
 
+# API de la NVD (NIST). Sin API key: 5 peticiones cada 30 s. Con key gratuita: 50.
+nvd:
+  base-url: https://services.nvd.nist.gov/rest/json/cves/2.0
+  api-key: ${NVD_API_KEY:}
+
 # Secret SOLO para desarrollo local; en producción se inyecta por variable de entorno JWT_SECRET
 jwt:
   secret: ${JWT_SECRET:dev-only-secret-change-in-production-256-bits-minimum-length-here}
