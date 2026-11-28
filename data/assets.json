@@ -1,0 +1,38 @@
+[
+  {
+    "code": "AST-PAGOS",
+    "name": "API de pagos",
+    "type": "API",
+    "ownerEmail": "analyst@vulnfollowup.local",
+    "environment": "PRODUCCION",
+    "active": true,
+    "providerCode": "PRV-NUBE"
+  },
+  {
+    "code": "AST-PORTAL",
+    "name": "Portal de clientes",
+    "type": "APLICACION_WEB",
+    "ownerEmail": "analyst@vulnfollowup.local",
+    "environment": "PREPRODUCCION",
+    "active": true,
+    "providerCode": "PRV-NUBE"
+  },
+  {
+    "code": "AST-COPIAS",
+    "name": "Almacén de copias",
+    "type": "ALMACENAMIENTO",
+    "ownerEmail": "analyst@vulnfollowup.local",
+    "environment": "PRODUCCION",
+    "active": true,
+    "providerCode": "PRV-ARCHIVO"
+  },
+  {
+    "code": "AST-INVENTARIO",
+    "name": "Inventario interno",
+    "type": "APLICACION",
+    "ownerEmail": "analyst@vulnfollowup.local",
+    "environment": "PRUEBAS",
+    "active": true,
+    "providerCode": null
+  }
+]

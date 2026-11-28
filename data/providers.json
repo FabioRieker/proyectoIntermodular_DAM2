@@ -1,0 +1,20 @@
+[
+  {
+    "code": "PRV-NUBE",
+    "name": "Nube de Pruebas",
+    "service": "Alojamiento de aplicaciones",
+    "criticality": "ALTA",
+    "contractRef": "DEMO-01",
+    "reviewDate": "2028-06-30",
+    "contact": "soporte@nube.example"
+  },
+  {
+    "code": "PRV-ARCHIVO",
+    "name": "Archivo de Pruebas",
+    "service": "Custodia de copias",
+    "criticality": "MEDIA",
+    "contractRef": "DEMO-02",
+    "reviewDate": "2028-12-15",
+    "contact": "contacto@archivo.example"
+  }
+]
