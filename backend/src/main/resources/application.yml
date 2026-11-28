@@ -16,6 +16,19 @@ spring:
       ddl-auto: validate
     open-in-view: false
 
+# Escáner de dependencias. El directorio a analizar se configura aquí, no lo elige el usuario.
+scanner:
+  command: trivy,fs,--format,json,--quiet,--scanners,vuln
+  target: ${SCANNER_TARGET:../data/audit-target}
+  timeout-seconds: 300
+
+# API de la NVD (NIST). Sin API key: 5 peticiones cada 30 s. Con key gratuita: 50.
+nvd:
+  base-url: https://services.nvd.nist.gov/rest/json/cves/2.0
+  api-key: ${NVD_API_KEY:}
+  # Máximo de CVEs que se consultan por análisis (sin key, 20 consultas tardan unos 2 minutos)
+  max-lookups: 20
+
 # Secret SOLO para desarrollo local; en producción se inyecta por variable de entorno JWT_SECRET
 jwt:
   secret: ${JWT_SECRET:dev-only-secret-change-in-production-256-bits-minimum-length-here}
