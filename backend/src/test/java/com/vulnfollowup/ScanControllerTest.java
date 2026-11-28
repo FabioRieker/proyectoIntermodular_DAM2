@@ -22,7 +22,8 @@ import com.jayway.jsonpath.JsonPath;
 @AutoConfigureMockMvc
 @TestPropertySource(properties = {
     "scanner.command=sh",
-    "scanner.target=src/test/resources/scanner/fake-trivy.sh"
+    "scanner.target=src/test/resources/scanner/fake-trivy.sh",
+    "nvd.max-lookups=0" // sin peticiones a internet en los tests
 })
 class ScanControllerTest {
 

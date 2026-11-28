@@ -24,7 +24,7 @@ class ScanServiceTest {
 
     @Test
     void analisisCorrectoTerminaCompletado() throws Exception {
-        service = new ScanService(List.of("sh"), FAKE_TRIVY, 10);
+        service = new ScanService(List.of("sh"), FAKE_TRIVY, 10, null, 0);
 
         ScanJob job = service.start("analyst@test");
         waitUntilFinished(job);
@@ -37,7 +37,7 @@ class ScanServiceTest {
 
     @Test
     void analisisConErrorTerminaFallido() throws Exception {
-        service = new ScanService(List.of("sh", "-c", "exit 2"), "x", 10);
+        service = new ScanService(List.of("sh", "-c", "exit 2"), "x", 10, null, 0);
 
         ScanJob job = service.start("analyst@test");
         waitUntilFinished(job);
@@ -49,7 +49,7 @@ class ScanServiceTest {
     @Test
     void noSePuedenLanzarDosAnalisisALaVez() throws Exception {
         // El falso escáner tarda 1 segundo para que el primero siga en curso.
-        service = new ScanService(List.of("sh", "-c", "sleep 1; sh " + FAKE_TRIVY), "x", 10);
+        service = new ScanService(List.of("sh", "-c", "sleep 1; sh " + FAKE_TRIVY), "x", 10, null, 0);
 
         ScanJob first = service.start("a");
         assertThrows(ScanAlreadyRunningException.class, () -> service.start("b"));
@@ -63,7 +63,7 @@ class ScanServiceTest {
 
     @Test
     void conVariosHilosALaVezSoloSeAceptaUno() throws Exception {
-        service = new ScanService(List.of("sh", "-c", "sleep 1; sh " + FAKE_TRIVY), "x", 10);
+        service = new ScanService(List.of("sh", "-c", "sleep 1; sh " + FAKE_TRIVY), "x", 10, null, 0);
         AtomicInteger accepted = new AtomicInteger();
         AtomicInteger rejected = new AtomicInteger();
 

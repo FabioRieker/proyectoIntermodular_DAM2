@@ -26,6 +26,8 @@ scanner:
 nvd:
   base-url: https://services.nvd.nist.gov/rest/json/cves/2.0
   api-key: ${NVD_API_KEY:}
+  # Máximo de CVEs que se consultan por análisis (sin key, 20 consultas tardan unos 2 minutos)
+  max-lookups: 20
 
 # Secret SOLO para desarrollo local; en producción se inyecta por variable de entorno JWT_SECRET
 jwt:
