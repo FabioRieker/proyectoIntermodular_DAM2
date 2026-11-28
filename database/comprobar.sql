@@ -1,4 +1,4 @@
--- En una base inicializada: psql -X -v ON_ERROR_STOP=1 -d <base> -f database/comprobar.sql
+-- En una base migrada por Flyway (arrancar el backend una vez): psql -X -v ON_ERROR_STOP=1 -d <base> -f database/comprobar.sql
 BEGIN;
 
 DO $prueba$
