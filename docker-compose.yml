@@ -17,5 +17,24 @@ services:
       retries: 5
     restart: unless-stopped
 
+  # Backend en contenedor. Solo arranca con:  docker compose --profile app up -d --build
+  # (con "docker compose up -d" sigue arrancando solo la base de datos, para desarrollar desde el IDE)
+  backend:
+    build: ./backend
+    container_name: vulnfollowup-backend
+    profiles: ["app"]
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://postgres-db:5432/vulnfollowup
+      DB_USER: vuln_admin
+      DB_PASSWORD: vuln_password_local
+      NVD_API_KEY: ${NVD_API_KEY:-}
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/audit-target:/app/audit-target:ro
+
 volumes:
   postgres_data:
