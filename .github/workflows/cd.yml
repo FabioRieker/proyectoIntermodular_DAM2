@@ -1,0 +1,66 @@
+name: CD - Publicar imagen del backend
+
+# Se publica una imagen cada vez que se integra algo en main (versión entregable).
+# También se puede lanzar a mano desde la pestaña Actions.
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publicar-backend:
+    name: Construir, analizar y publicar imagen
+    runs-on: ubuntu-latest
+    # GITHUB_TOKEN solo necesita leer el código y escribir en GitHub Packages (GHCR)
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout del codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login en GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Etiquetas: el hash corto del commit (para saber qué versión es) y latest
+      - name: Calcular etiquetas de la imagen
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/vulnfollowup-backend
+          tags: |
+            type=sha
+            type=raw,value=latest
+
+      # Primero se construye en local (sin publicar) para poder analizarla
+      - name: Construir imagen
+        uses: docker/build-push-action@v6
+        with:
+          context: ./backend
+          load: true
+          push: false
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Si la imagen tiene vulnerabilidades críticas con parche disponible, no se publica
+      - name: Analizar imagen con Trivy
+        run: |
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:0.76.2 \
+            image --exit-code 1 --severity CRITICAL --ignore-unfixed --no-progress \
+            "${{ fromJSON(steps.meta.outputs.json).tags[0] }}"
+
+      - name: Publicar imagen en GHCR
+        run: docker push --all-tags "ghcr.io/$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')/vulnfollowup-backend"
