@@ -49,4 +49,32 @@ public class Provider {
         this.reviewDate = reviewDate;
         this.contact = contact;
     }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public String getCriticality() {
+        return criticality;
+    }
+
+    public String getContractRef() {
+        return contractRef;
+    }
+
+    public LocalDate getReviewDate() {
+        return reviewDate;
+    }
+
+    public String getContact() {
+        return contact;
+    }
 }
